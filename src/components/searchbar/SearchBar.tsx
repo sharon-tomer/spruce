@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import styles from './SearchBar.module.css';
+import { SearchProps } from '../../types';
+class SearchBar extends Component<{onSubmit: SearchProps}, {searchTerm: string}> {
 
-class SearchBar extends Component<any, any> {
-
-    constructor(props: any){
+    constructor(props: {onSubmit: SearchProps}){
         super(props);
         this.state = {searchTerm: ''};
     }
@@ -24,7 +24,7 @@ class SearchBar extends Component<any, any> {
                     <label>
                         Gif search:
                     </label>
-                    <input className={styles.input} type="text" name="searchbar" value={this.state.value} onChange={this.handleChange.bind(this)}  />
+                    <input className={styles.input} type="text" name="searchbar" value={this.state.searchTerm} onChange={this.handleChange.bind(this)}  />
                     <input className={styles.submit} type="submit" value="Find it!" />
                 </form>
             </div>

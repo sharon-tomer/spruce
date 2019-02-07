@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
 import styles from './Result.module.css';
 
-class Result extends Component<any, any> {
-
-    constructor(props: any){
-        super(props);
-        this.state = {searchTerm: ''};
-    }
+class Result extends Component<{src: string}, any> {
 
     render() {
-        let {src} = this.props;
+        let { src } = this.props;
         return (
             <div className={styles.wrapper}>
                 <img src={src} height={175} width={175}/>

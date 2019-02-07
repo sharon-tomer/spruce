@@ -4,7 +4,7 @@ import styles from './App.module.css';
 import SearchBar from './components/searchbar/SearchBar';
 import ResultsTab from './components/resultsTab/ResultsTab';
 import { SearchResult, SearchError } from './types';
-import {searchApi} from './helpers/api';
+import { searchApi } from './helpers/api';
 
 class App extends Component <{}, {results: SearchResult[]|SearchError}> {
   constructor(props: any) {
@@ -25,7 +25,7 @@ class App extends Component <{}, {results: SearchResult[]|SearchError}> {
     );
   }
 
-  async search(text: string) {
+  search(text: string): void {
     searchApi(text)
     .then((results) => {
       if (!results.length) {
@@ -34,7 +34,7 @@ class App extends Component <{}, {results: SearchResult[]|SearchError}> {
       else {
         this.setState({results});
       }
-    })
+    });
   }
 
   onSearchFailed (err: string) {

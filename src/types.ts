@@ -10,3 +10,7 @@ export interface SearchResult {
 export interface SearchError {
     err: string
 }
+
+export interface SearchProps {
+    (searchTerm: string): void;
+}
