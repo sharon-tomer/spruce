@@ -1,27 +1,49 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import styles from './App.module.css';
+import SearchBar from './components/searchbar/SearchBar';
+import ResultsTab from './components/resultsTab/ResultsTab';
+import { SearchResult, SearchError } from './types';
+import {searchApi} from './helpers/api';
 
-class App extends Component {
+class App extends Component <{}, {results: SearchResult[]|SearchError}> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      results: []
+    }
+  }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className={styles.App}>
+        <div className={styles.Main}>
+          <img src={logo} className={styles.logo} alt="logo" />
+          <SearchBar onSubmit={this.search.bind(this)}/>
+          <ResultsTab results={this.state.results}/>
+        </div>
       </div>
     );
+  }
+
+  async search(text: string) {
+    searchApi(text)
+    .then((results) => {
+      if (!results.length) {
+        this.onNoResults();
+      }
+      else {
+        this.setState({results});
+      }
+    })
+  }
+
+  onSearchFailed (err: string) {
+    console.log('Error fetching data from api: ', err);
+    // todo
+  }
+
+  onNoResults() {
+    // todo
   }
 }
 

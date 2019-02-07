@@ -1,0 +1,14 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    /* height: 200px; */
+    padding: 0.2em;
+    justify-content: space-between;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    line-height: 36px;
+    height: 44px;
+}

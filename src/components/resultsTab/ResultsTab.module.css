@@ -1,0 +1,7 @@
+.results {
+    width: 70vw;
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    padding: 20px;
+  }

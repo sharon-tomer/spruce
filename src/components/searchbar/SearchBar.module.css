@@ -1,0 +1,23 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    justify-content: space-between;
+    
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    line-height: 36px;
+    height: 44px;
+    font-size: calc(5px + 2vmin);
+    padding: 5px;
+}
+
+.submit {
+    border-width: 0;
+    background-color: #2196F3;
+    border-radius: 30px;
+    font-size: calc(5px + 2vmin);
+}
